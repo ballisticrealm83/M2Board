@@ -149,9 +149,9 @@
 
 </head>
 <body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -207,14 +207,11 @@
                     <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
                             stroke-width="65" stroke-dasharray="235, 943" fill="none">
                     </circle>
-
-
-
                 </svg>
             </div>
         </div>
     </div>
-    <!-- added by Liu start-->
+<!-- added by Liu start-->
     <!-- dynamic chart -->
     <div>
         <script type="text/javascript">
@@ -269,8 +266,6 @@
                     }
                 });
 
-
-
                 var updateInterval = 300;
                 // initial value
                 var yValue1 = 640;
@@ -301,7 +296,6 @@
                             y: yValue1
                         });
 
-
                     };
 
                     // updating legend text with  updated with y Value
@@ -316,7 +310,7 @@
 
                 // update chart after specified interval
                 setInterval(function () { updateChart() }, updateInterval);
-            }
+        }
         </script>
         <script type="text/javascript" src="/js/canvasjs.min.js"></script>
         <div id="dynamicChartContainer">
