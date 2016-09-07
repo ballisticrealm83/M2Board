@@ -22,6 +22,9 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/angular.js"></script>
+        <script src="js/controller/controller.js"></script>
+
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -55,66 +58,147 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+          <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+              <svg id="meter">
+
+
+                  <!-- whole white arc -->
+                  <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                          stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                  </circle>
+
+                  <!-green arc -->
+                  <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                          stroke-width="60" stroke-dasharray="235, 943" fill="none">
+                  </circle>
+                  <!-- green mask -->
+                  <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                          stroke-width="65" stroke-dasharray="150, 943" fill="none">
+                  </circle>
+
+                  <!-- red arc -->
+                  <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                          stroke-width="60" stroke-dasharray="300, 943" fill="none">
+                  </circle>
+
+                  <!-- red  mask -->
+                  <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                          stroke-width="65" stroke-dasharray="235, 943" fill="none">
+                  </circle>
+
+
+
+              </svg>
+          </div>
       </div>
     </div>
 <!-- added by Liu start-->
-
 <!-- dynamic chart -->
     <div>
-        <script type="text/javascript">
-    window.onload = function () {
+            <script type="text/javascript">
+                window.onload = function () {
 
-        var dps = []; // dataPoints
+                    // dataPoints
+                    var dataPoints1 = [];
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            title: {
-                text: "Live Random Data"
-            },
-            data: [{
-                type: "line",
-                dataPoints: dps
-            }]
-        });
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        zoomEnabled: true,
+                        title: {
+                            text: "Dynamic Chart"
+                        },
+                        toolTip: {
+                            shared: true
 
-        var xVal = (new Date()).getDate;
-        var yVal = 100;
-        var updateInterval = 100;
-        var dataLength = 500; // number of dataPoints visible at any point
+                        },
+                        legend: {
+                            verticalAlign: "top",
+                            horizontalAlign: "center",
+                            fontSize: 14,
+                            fontWeight: "bold",
+                            fontFamily: "calibri",
+                            fontColor: "dimGrey"
+                        },
+                        axisX: {
+                            title: "chart updates every 0.3 secs"
+                        },
+                        axisY: {
+                            prefix: '$',
+                            includeZero: false
+                        },
+                        data: [{
+                            // dataSeries1
+                            type: "line",
+                            xValueType: "dateTime",
+                            showInLegend: true,
+                            name: "Company A",
+                            dataPoints: dataPoints1
+                        }],
+                        legend: {
+                            cursor: "pointer",
+                            itemclick: function (e) {
+                                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                    e.dataSeries.visible = false;
+                                }
+                                else {
+                                    e.dataSeries.visible = true;
+                                }
+                                chart.render();
+                            }
+                        }
+                    });
 
-        var updateChart = function (count) {
-            count = count || 1;
-            // count is number of times loop runs to generate random dataPoints.
 
-            for (var j = 0; j < count; j++) {
-                yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
-                dps.push({
-                    x: xVal,
-                    y: yVal
-                });
-                xVal = (new Date()).getDate;
-            };
-            if (dps.length > dataLength) {
-                dps.shift();
-            }
 
-            chart.render();
+                    var updateInterval = 3000;
+                    // initial value
+                    var yValue1 = 640;
 
-        };
+                    var time = new Date();
+                    // starting at 9.30 am
 
-        // generates first set of dataPoints
-        updateChart(dataLength);
+                    var updateChart = function (count) {
+                        count = count || 1;
 
-        // update chart after specified time.
-        setInterval(function () { updateChart() }, updateInterval);
+                        // count is number of times loop runs to generate random dataPoints.
 
-    }
-        </script>
-        <script type="text/javascript" src="/js/canvasjs.min.js"></script>
-        <div id="chartContainer">
-        </div><span ng-non-bindable>
+                        for (var i = 0; i < count; i++) {
+
+                            // add interval duration to time
+                            time.setTime(time.getTime() + updateInterval);
+
+
+                            // generating random values
+                            var deltaY1 = .5 + Math.random() * (-.5 - .5);
+
+                            // adding random value and rounding it to two digits.
+                            yValue1 = Math.round((yValue1 + deltaY1) * 100) / 100;
+
+                            // pushing the new values
+                            dataPoints1.push({
+                                x: time.getTime(),
+                                y: yValue1
+                            });
+
+
+                        };
+
+                        // updating legend text with  updated with y Value
+                        chart.options.data[0].legendText = " Company A  $" + yValue1;
+
+                        chart.render();
+
+                    };
+
+                    // generates first set of dataPoints
+                    updateChart(300);
+
+                    // update chart after specified interval
+                    setInterval(function () { updateChart() }, updateInterval);
+                }
+            </script>
+            <script type="text/javascript" src="/js/canvasjs.min.js"></script>
+            <div id="chartContainer">
+            </div>
     </div>
 <!-- added by Liu end-->
     <div class="container">
