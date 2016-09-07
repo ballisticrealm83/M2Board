@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -22,6 +22,9 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/angular.js"></script>
+        <script src="js/controller/controller.js"></script>
+
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -55,9 +58,38 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+          <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+              <svg id="meter">
+
+
+                  <!-- whole white arc -->
+                  <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                          stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                  </circle>
+
+                  <!-green arc -->
+                  <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                          stroke-width="60" stroke-dasharray="235, 943" fill="none">
+                  </circle>
+                  <!-- green mask -->
+                  <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                          stroke-width="65" stroke-dasharray="150, 943" fill="none">
+                  </circle>
+
+                  <!-- red arc -->
+                  <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                          stroke-width="60" stroke-dasharray="300, 943" fill="none">
+                  </circle>
+
+                  <!-- red  mask -->
+                  <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                          stroke-width="65" stroke-dasharray="235, 943" fill="none">
+                  </circle>
+
+
+
+              </svg>
+          </div>
       </div>
     </div>
 
