@@ -4,7 +4,7 @@
    Author's custom styles
    ========================================================================== */
 
-#chartContainer {
+#dynamicChartContainer {
     height: 300px; 
     width: 35%; 
     margin-left: 7%;
