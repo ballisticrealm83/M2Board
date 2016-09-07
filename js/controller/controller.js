@@ -1,13 +1,15 @@
 ﻿(function () {
 
-angular.module('m2Board', [])
 
-    .controller('gaugeController', ['$scope', currencyService, function GaugeController($scope, currencyService) {
-        
+    angular.module('m2Board', [])
 
-        alert(currencyService);
-        
-        
+    .controller('gaugeController', ['$scope', 'currencyService', function GaugeControler($scope, currencyService) {
+
+        alert(currencyService.getCurrencies()['SGD']);
+
+
+
+
         /*
         setTimeout(
    function () {
@@ -15,10 +17,10 @@ angular.module('m2Board', [])
        $("#greenArcMask").attr("stroke-dasharray", "50,943");
    }, 2000);
    */
-      
 
 
     }]);
+
 
 }());
 
