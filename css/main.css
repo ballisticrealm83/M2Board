@@ -4,7 +4,11 @@
    Author's custom styles
    ========================================================================== */
 
-
+#chartContainer {
+    height: 300px; 
+    width: 35%; 
+    margin-left: 7%;
+}
 
 
 
