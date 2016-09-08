@@ -182,13 +182,9 @@
 			</article>
 		</article>
 		
-		<article>
-		</article>
-		
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
+    <article class="jumbotron col-md-12">
+        <article id="usdGauge" class="container col-md-4">
             <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
                 <svg id="meter">
 
@@ -218,8 +214,71 @@
                     </circle>
                 </svg>
             </div>
-        </div>
-    </div>
+        </article>
+        <article id="gbpGauge" class="container col-md-4">
+            <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+                <svg id="meter">
+
+
+                    <!-- whole white arc -->
+                    <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                    </circle>
+
+                    <!-- green arc -->
+                    <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                            stroke-width="60" stroke-dasharray="235, 943" fill="none">
+                    </circle>
+                    <!-- green mask -->
+                    <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="150, 943" fill="none">
+                    </circle>
+
+                    <!-- red arc -->
+                    <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                            stroke-width="60" stroke-dasharray="300, 943" fill="none">
+                    </circle>
+
+                    <!-- red  mask -->
+                    <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="235, 943" fill="none">
+                    </circle>
+                </svg>
+            </div>
+        </article>
+        <article id="eurGauge" class="container col-md-4">
+            <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+                <svg id="meter">
+
+
+                    <!-- whole white arc -->
+                    <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                    </circle>
+
+                    <!-- green arc -->
+                    <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                            stroke-width="60" stroke-dasharray="235, 943" fill="none">
+                    </circle>
+                    <!-- green mask -->
+                    <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="150, 943" fill="none">
+                    </circle>
+
+                    <!-- red arc -->
+                    <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                            stroke-width="60" stroke-dasharray="300, 943" fill="none">
+                    </circle>
+
+                    <!-- red  mask -->
+                    <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="235, 943" fill="none">
+                    </circle>
+                </svg>
+            </div>
+        </article>
+    </article>
+	
 <!-- added by Liu start-->
     <!-- dynamic chart -->
     <div>
@@ -327,35 +386,15 @@
     </div>
     <!-- added by Liu end-->
 
-    <div id="chartContainer">
-    </div>
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-        </div>
+	<article id="chartContainer" class="col-md-12">
+			
+	</article>
+	
+	<footer>
+		<p>&copy; Anonymous 2016</p>
+	</footer>
 
-        <hr>
-
-        <footer>
-            <p>&copy; Company 2015</p>
-        </footer>
-    </div> <!-- /container -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="js/vendor/bootstrap.min.js"></script>
