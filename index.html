@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="m2Board" ng-controller="gaugeController">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
@@ -126,46 +126,49 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/vendor/angular.js"></script>
     <script src="js/controller/controller.js"></script>
+    <script src="js/controller/lineChartController.js"></script>
+    <script src="js/service/currencyService.js"></script>
 
 </head>
 <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-		
-		<article id="headerContainer" class="container col-md-12">
-			<article id="toolBar">
-				<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-					<div class="container">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">M2 Board</a>
-						</div>
-						<div id="navbar" class="navbar-collapse collapse">
-							<form class="navbar-form navbar-right" role="form">
-								<div class="form-group">
-									<input type="text" placeholder="SID" class="form-control">
-								</div>
-								<div class="form-group">
-									<input type="password" placeholder="Password" class="form-control">
-								</div>
-								<button type="submit" class="btn btn-success">Sign in</button>
-							</form>
-						</div><!--/.navbar-collapse -->
-					</div>
-				</nav>
-			</article>
-		</article>
-		
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <article id="headerContainer" class="container col-md-12">
+        <article id="toolBar">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">M2 Board</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-right" role="form">
+                            <div class="form-group">
+                                <input type="text" placeholder="SID" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success">Sign in</button>
+                        </form>
+                    </div><!--/.navbar-collapse -->
+                </div>
+            </nav>
+        </article>
+    </article>
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <article class="jumbotron col-md-12">
         <article id="usdGauge" class="container col-md-4">
-            <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+            <button onclick="loadLineChart('USD')" />
+            <div id="wrapper">
                 <svg id="meter">
 
 
@@ -258,21 +261,23 @@
             </div>
         </article>
     </article>
-    <article id="dynamicChartContainer" class="col-md-12"></article>
-	<article id="chartContainer" class="col-md-12">
-		<article id="chart2" class="col-md-6">
-			Chart 1 container
-		</article>
-		<article id="chart2" class="col-md-6">
-			Chart 2 container
-		</article>
-	</article>
-	
-	<footer class="col-md-12">
-		<p>&copy; Team Anonymous 2016</p>
-	</footer>
-	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <article id="dynamicChartContainer" class="col-md-12" ng-show="{{USDvisiblility}}"></article>
+    <article id="dynamicChartContainer" class="col-md-12" ng-show="{{SGDvisiblility}}"></article>
+    <article id="dynamicChartContainer" class="col-md-12" ng-show="{{GBPvisiblility}}"></article>
+    <article id="chartContainer" class="col-md-12">
+        <article id="chart2" class="col-md-6">
+            Chart 1 container
+        </article>
+        <article id="chart2" class="col-md-6">
+            Chart 2 container
+        </article>
+    </article>
+
+    <footer class="col-md-12">
+        <p>&copy; Team Anonymous 2016</p>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="js/vendor/bootstrap.min.js"></script>
