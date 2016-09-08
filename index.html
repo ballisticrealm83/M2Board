@@ -169,107 +169,49 @@
     </article>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <article class="jumbotron col-md-12">
-        <article id="usdGauge" class="container col-md-4">
+    <article class="jumbotron col-md-12" ng-controller="meterController">
+        
+        <div ng-repeat="currency in currencies">
 
-            <button ng-controller="lineChartController" ng-click="loadLineChart('SGD')" />
-            <div id="wrapper" >
+            <article id="{{currency.code}}Gauge" class="container col-md-4">
 
-                <svg id="meter">
-
-
-                    <!-- whole white arc -->
-                    <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="471, 943" fill="none">
-                    </circle>
-
-                    <!-- green arc -->
-                    <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
-                            stroke-width="60" stroke-dasharray="235, 943" fill="none">
-                    </circle>
-                    <!-- green mask -->
-                    <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="150, 943" fill="none">
-                    </circle>
-
-                    <!-- red arc -->
-                    <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
-                            stroke-width="60" stroke-dasharray="300, 943" fill="none">
-                    </circle>
-
-                    <!-- red  mask -->
-                    <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="235, 943" fill="none">
-                    </circle>
-                </svg>
-            </div>
-        </article>
-        <!--hendra-->
-        <article id="gbpGauge" class="container col-md-4">
-           
-            <div id="wrapper">
-
-                <svg id="meter">
+               
+                <div id="wrapper">
+                    {{currency.code}} - 
+                    
+                    <label ng-show="{{ isPositive(currency.code)}}">Positive balance</label>
+                    <label ng-hide="{{ isPositive(currency.code)}}"> Negative balance</label>
+                
+                    <svg id="meter" ng-controller="meterController">
 
 
-                    <!-- whole white arc -->
-                    <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="471, 943" fill="none">
-                    </circle>
+                        <!-- whole white arc -->
+                        <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                                stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                        </circle>
 
-                    <!-- green arc -->
-                    <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
-                            stroke-width="60" stroke-dasharray="235, 943" fill="none">
-                    </circle>
-                    <!-- green mask -->
-                    <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="150, 943" fill="none">
-                    </circle>
+                        <!-- green arc -->
+                        <circle id="{{currency.code}}greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                                stroke-width="60" stroke-dasharray="{{currency.stroke}}" fill=" none" ng-show="{{ isPositive(currency.code)}}">
+                        </circle>
+                        <!-- green mask -->
+                        <circle id="{{currency.code}}greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                                stroke-width="65" stroke-dasharray="{{currency.maskStroke}}" fill="none" ng-show="{{ isPositive(currency.code)}}">
+                        </circle>
 
-                    <!-- red arc -->
-                    <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
-                            stroke-width="60" stroke-dasharray="300, 943" fill="none">
-                    </circle>
+                        <!-- red arc -->
+                        <circle id="{{currency.code}}redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                                stroke-width="60" stroke-dasharray="{{currency.stroke}}" fill="none" ng-hide="{{ isPositive(currency.code)}}">
+                        </circle>
 
-                    <!-- red  mask -->
-                    <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="235, 943" fill="none">
-                    </circle>
-                </svg>
-            </div>
-        </article>
-        <article id="eurGauge" class="container col-md-4">
-
-            <div id="wrapper" >
-                <svg id="meter">
-
-
-                <!-- whole white arc -->
-                <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                        stroke-width="65" stroke-dasharray="471, 943" fill="none">
-                </circle>
-
-                <!-- green arc -->
-                <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
-                        stroke-width="60" stroke-dasharray="235, 943" fill="none">
-                </circle>
-                <!-- green mask -->
-                <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                        stroke-width="65" stroke-dasharray="150, 943" fill="none">
-                </circle>
-
-                <!-- red arc -->
-                <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
-                        stroke-width="60" stroke-dasharray="300, 943" fill="none">
-                </circle>
-
-                <!-- red  mask -->
-                <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                        stroke-width="65" stroke-dasharray="235, 943" fill="none">
-                </circle>
-                </svg>
-            </div>
-        </article>
+                        <!-- red  mask -->
+                        <circle id="{{currency.code}}redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                                stroke-width="65" stroke-dasharray="{{currency.maskStroke}}" fill="none" ng-hide="{{ isPositive(currency.code)}}">
+                        </circle>
+                    </svg>
+                </div>
+            </article>
+       </div>
     </article>
 
     <article id="dynamicChartContainer" class="col-md-12" ng-show="{{USDvisiblility}}"></article>

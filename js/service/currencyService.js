@@ -5,18 +5,18 @@
     var currencyFactory = function ($http, $q) {
 
 
-       /* var usdPosition = { "USD": "US Dollar", "": "true", "position": "true", "" };
-        var sgdPosition = { "SGD": "SG Dollar", "SGD": "Singapore Dollar", "GBP": "British Poundsterling" };
-        var gbpPosition = { "GBP": "British Dollar", "SGD": "Singapore Dollar", "GBP": "British Poundsterling" };
+        var usdPosition = { "code": "USD", "balance": "50", "stroke": "235, 943", "maskStroke": "150, 943" };
+        var sgdPosition = { "code": "SGD", "balance": "-25", "stroke": "300, 943", "maskStroke": "235, 943" };
+        var gbpPosition = { "code": "GBP", "balance": "30", "stroke": "235, 943", "maskStroke": "50, 943" };
+        var idrPosition = { "code": "IDR", "balance": "-30", "stroke": "400, 943", "maskStroke": "235, 943" };
 
-        */
+        var currencies = [usdPosition, sgdPosition, gbpPosition, idrPosition];
+        
         var factory = {};
 
         factory.getCurrencies = function () {
 
-            var currencyMap = { "USD": "US Dollar", "SGD": "Singapore Dollar", "GBP": "British Poundsterling" }
-
-            return currencyMap;
+            return currencies;
         };
 
 
