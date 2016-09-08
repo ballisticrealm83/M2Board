@@ -4,8 +4,34 @@
 
 
     var LineChartController = function ($scope) {
-        $scope.loadLineChart = function (currency) {
-            alert('i am line ' + currency);
+
+        $scope.USDvisibility = true;
+        $scope.EURvisibility = false;
+        $scope.GBPvisibility = false;
+        $scope.currency = "USD";
+
+        $scope.loadLineChart = function (currentCurrency) {
+            
+            $scope.currency = currentCurrency;
+            alert($scope.currency);
+            if (currency == "USD") {
+                
+                $scope.USDvisibility = true;
+                $scope.EURvisibility = false;
+                $scope.GBPvisibility = false;
+            }
+            if (currency == "EUR") {
+                
+                $scope.USDvisibility = false;
+                $scope.EURvisibility = true;
+                $scope.GBPvisibility = false;
+            }
+            if (currency == "GBP") {
+                $scope.USDvisibility = false;
+                $scope.EURvisibility = false;
+                $scope.GBPvisibility = true;
+            }
+            
         }
 
 

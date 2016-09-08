@@ -1,4 +1,4 @@
-﻿<!doctype html>v
+﻿<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -10,16 +10,19 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="js/canvasjs.min.js"></script>
     <script type="text/javascript">
-        window.onload = function () {
+        var thisCurrency = "USD";
 
+        function load(currency)
+        {
             // dataPoints
             var dataPoints1 = [];
+            
 
             var chart = new CanvasJS.Chart("dynamicChartContainer", {
                 zoomEnabled: true,
                 title: {
                     //#to-do change USD to {{currency}}
-                    text: "Money Movement - USD"
+                    text: "Money Movement - " + currency
                 },
                 toolTip: {
                     shared: true
@@ -46,7 +49,7 @@
                     xValueType: "dateTime",
                     showInLegend: true,
                     //#to-do change USD to {{currency}}
-                    name: "USD",
+                    name: "{{currency}}",
                     dataPoints: dataPoints1
                 }],
                 legend: {
@@ -97,16 +100,18 @@
                 chart.options.data[0].legendText = " USD  $" + yValue1;
 
                 chart.render();
+                };
 
-            };
+                // generates first set of dataPoints
+                updateChart(1000);
 
-            // generates first set of dataPoints
-            updateChart(1000);
-
-            // update chart after specified interval
-            setInterval(function () { updateChart() }, updateInterval);
+                // update chart after specified interval
+                setInterval(function () { updateChart() }, updateInterval);
         }
-       
+        
+        window.onload = function () {
+            load("USD");
+        }                  
 
     </script>
     <script type="text/javascript" src="js/vendor/canvasjs.min.js"></script>
@@ -134,7 +139,7 @@
     <script src="js/service/currencyService.js"></script>
 
 </head>
-<body ng-app="m2Board">
+<body ng-app="m2Board" ng-controller="lineChartController">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -172,8 +177,8 @@
     <article class="jumbotron col-md-12">
         <article id="usdGauge" class="container col-md-4">
 
-            <button ng-controller="lineChartController" ng-click="loadLineChart('SGD')" />
-            <div id="wrapper" >
+            <button onclick="load('USD')" />
+            <div id="wrapper">
 
                 <svg id="meter">
 
@@ -206,7 +211,7 @@
         </article>
         <!--hendra-->
         <article id="gbpGauge" class="container col-md-4">
-           
+            <button onclick="load('GBP')" />
             <div id="wrapper">
 
                 <svg id="meter">
@@ -239,42 +244,42 @@
             </div>
         </article>
         <article id="eurGauge" class="container col-md-4">
-
-            <div id="wrapper" >
+            <button onclick="load('EUR')" />
+            <div id="wrapper">
                 <svg id="meter">
 
 
-                <!-- whole white arc -->
-                <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                        stroke-width="65" stroke-dasharray="471, 943" fill="none">
-                </circle>
+                    <!-- whole white arc -->
+                    <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                    </circle>
 
-                <!-- green arc -->
-                <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
-                        stroke-width="60" stroke-dasharray="235, 943" fill="none">
-                </circle>
-                <!-- green mask -->
-                <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                        stroke-width="65" stroke-dasharray="150, 943" fill="none">
-                </circle>
+                    <!-- green arc -->
+                    <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                            stroke-width="60" stroke-dasharray="235, 943" fill="none">
+                    </circle>
+                    <!-- green mask -->
+                    <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="150, 943" fill="none">
+                    </circle>
 
-                <!-- red arc -->
-                <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
-                        stroke-width="60" stroke-dasharray="300, 943" fill="none">
-                </circle>
+                    <!-- red arc -->
+                    <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                            stroke-width="60" stroke-dasharray="300, 943" fill="none">
+                    </circle>
 
-                <!-- red  mask -->
-                <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                        stroke-width="65" stroke-dasharray="235, 943" fill="none">
-                </circle>
+                    <!-- red  mask -->
+                    <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                            stroke-width="65" stroke-dasharray="235, 943" fill="none">
+                    </circle>
                 </svg>
             </div>
         </article>
     </article>
 
-    <article id="dynamicChartContainer" class="col-md-12" ng-show="{{USDvisiblility}}"></article>
-    <article id="dynamicChartContainer" class="col-md-12" ng-show="{{SGDvisiblility}}"></article>
-    <article id="dynamicChartContainer" class="col-md-12" ng-show="{{GBPvisiblility}}"></article>
+    <article id="dynamicChartContainer" class="col-md-12" ng-show="USDvisibility"></article>
+    <article id="dynamicChartContainer" class="col-md-12" ng-show="EURvisibility"></article>
+    <article id="dynamicChartContainer" class="col-md-12" ng-show="GBPvisibility"></article>
     <article id="chartContainer" class="col-md-12">
         <article id="chart2" class="col-md-6">
             Chart 1 container
@@ -300,7 +305,7 @@
 
     <script src="js/vendor/bootstrap.min.js"></script>
 
-   
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
