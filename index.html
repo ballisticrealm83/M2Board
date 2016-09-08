@@ -3,7 +3,11 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
+<<<<<<< HEAD
 <html class="no-js" lang="" ng-app="m2Board">
+=======
+<html class="no-js" lang="" >
+>>>>>>> c19e98e6c595915c4b42fa990fef95b003f15355
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
@@ -130,7 +134,7 @@
     <script src="js/service/currencyService.js"></script>
 
 </head>
-<body>
+<body ng-app="m2Board">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -167,8 +171,13 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <article class="jumbotron col-md-12">
         <article id="usdGauge" class="container col-md-4">
+<<<<<<< HEAD
             <button onclick="loadLineChart('USD')" ng-controller="lineChartController"></button>
             <div id="wrapper"  ng-controller="gaugeController">
+=======
+            <button ng-controller="lineChartController" ng-click="loadLineChart('SGD')" />
+            <div id="wrapper" >
+>>>>>>> c19e98e6c595915c4b42fa990fef95b003f15355
                 <svg id="meter">
 
 
@@ -198,9 +207,11 @@
                 </svg>
             </div>
         </article>
+        <!--hendra-->
         <article id="gbpGauge" class="container col-md-4">
-            <button onclick="alert('SGD')" />
-            <div id="wrapper"  ng-controller="gaugeController">
+           
+            <div id="wrapper">
+
                 <svg id="meter">
 
 
@@ -231,33 +242,34 @@
             </div>
         </article>
         <article id="eurGauge" class="container col-md-4">
-            <div id="wrapper" ng-controller="gaugeController">
+
+            <div id="wrapper" >
                 <svg id="meter">
 
 
-                    <!-- whole white arc -->
-                    <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="471, 943" fill="none">
-                    </circle>
+                <!-- whole white arc -->
+                <circle id="baseArc" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                        stroke-width="65" stroke-dasharray="471, 943" fill="none">
+                </circle>
 
-                    <!-- green arc -->
-                    <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
-                            stroke-width="60" stroke-dasharray="235, 943" fill="none">
-                    </circle>
-                    <!-- green mask -->
-                    <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="150, 943" fill="none">
-                    </circle>
+                <!-- green arc -->
+                <circle id="greenArc" r="150" cx="50%" cy="50%" stroke="#00ff00"
+                        stroke-width="60" stroke-dasharray="235, 943" fill="none">
+                </circle>
+                <!-- green mask -->
+                <circle id="greenArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                        stroke-width="65" stroke-dasharray="150, 943" fill="none">
+                </circle>
 
-                    <!-- red arc -->
-                    <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
-                            stroke-width="60" stroke-dasharray="300, 943" fill="none">
-                    </circle>
+                <!-- red arc -->
+                <circle id="redArc" r="150" cx="50%" cy="50%" stroke="#ff0000"
+                        stroke-width="60" stroke-dasharray="300, 943" fill="none">
+                </circle>
 
-                    <!-- red  mask -->
-                    <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
-                            stroke-width="65" stroke-dasharray="235, 943" fill="none">
-                    </circle>
+                <!-- red  mask -->
+                <circle id="redArcMask" r="150" cx="50%" cy="50%" stroke="#ffffff"
+                        stroke-width="65" stroke-dasharray="235, 943" fill="none">
+                </circle>
                 </svg>
             </div>
         </article>
@@ -281,12 +293,12 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <article id="dynamicChartContainer" class="col-md-12"></article>
-	
-	<footer class="col-md-12">
-		<p>&copy; Team Anonymous 2016</p>
-	</footer>
-	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <footer class="col-md-12">
+        <p>&copy; Team Anonymous 2016</p>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="js/vendor/bootstrap.min.js"></script>
