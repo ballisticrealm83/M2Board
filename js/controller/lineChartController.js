@@ -2,7 +2,7 @@
 
     angular.module('m2Board', [])
 
-    .controller('lineChartController', function($scope) {
+     .controller('lineChartController', ['$scope', 'currencyService', function lineChartController($scope, currencyService) {
        
 
    
@@ -12,7 +12,7 @@
         }
 
 
-    });
+    }]);
 
 
 
