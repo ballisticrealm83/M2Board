@@ -11,7 +11,7 @@
     <script type="text/javascript" src="js/canvasjs.min.js"></script>
     <script type="text/javascript">
         var thisCurrency = "USD";
-
+/*
         function load(currency)
         {
             // dataPoints
@@ -113,6 +113,7 @@
             load("USD");
         }                  
 
+        */
     </script>
     <script type="text/javascript" src="js/vendor/canvasjs.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -175,12 +176,13 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
 
-    <article class="jumbotron col-md-12" ng-controller="meterController">
+    <article class="jumbotron col-md-12" >
         
         <div ng-repeat="currency in currencies">
 
             <article id="{{currency.code}}Gauge" class="container col-md-4">
-                <button onclick="load('{{currency.code}}')" />
+                
+                <button ng-click="load(currency.code)" />
                
                 <div id="wrapper">
                     {{currency.code}} - 
@@ -188,7 +190,7 @@
                     <label ng-show="{{ isPositive(currency.code)}}">Positive balance</label>
                     <label ng-hide="{{ isPositive(currency.code)}}"> Negative balance</label>
                 
-                    <svg id="meter" ng-controller="meterController">
+                    <svg id="meter" >
 
 
                         <!-- whole white arc -->

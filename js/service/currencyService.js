@@ -10,7 +10,7 @@
         var gbpPosition = { "code": "GBP", "balance": "30", "stroke": "235, 943", "maskStroke": "50, 943" };
         var idrPosition = { "code": "IDR", "balance": "-30", "stroke": "400, 943", "maskStroke": "235, 943" };
 
-        var currencies = [usdPosition, sgdPosition, gbpPosition, idrPosition];
+        var currencies = [usdPosition, sgdPosition, gbpPosition];
         
         var factory = {};
 
