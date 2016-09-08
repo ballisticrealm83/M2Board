@@ -17,7 +17,8 @@
             var chart = new CanvasJS.Chart("dynamicChartContainer", {
                 zoomEnabled: true,
                 title: {
-                    text: "Dynamic Chart"
+                    //#to-do change USD to {{currency}}
+                    text: "Money Movement - USD"
                 },
                 toolTip: {
                     shared: true
@@ -32,7 +33,7 @@
                     fontColor: "dimGrey"
                 },
                 axisX: {
-                    title: "chart updates every 0.3 secs"
+                    title: "chart updates every secs"
                 },
                 axisY: {
                     prefix: '$',
@@ -43,7 +44,8 @@
                     type: "line",
                     xValueType: "dateTime",
                     showInLegend: true,
-                    name: "Company A",
+                    //#to-do change USD to {{currency}}
+                    name: "USD",
                     dataPoints: dataPoints1
                 }],
                 legend: {
@@ -60,7 +62,7 @@
                 }
             });
 
-            var updateInterval = 300;
+            var updateInterval = 1000;
             // initial value
             var yValue1 = 640;
 
@@ -74,7 +76,7 @@
                 for (var i = 0; i < count; i++) {
 
                     // add interval duration to time
-                    time.setTime(time.getTime() + updateInterval);
+                    time.setTime(time.getTime() - updateInterval);
 
                     // generating random values
                     var deltaY1 = .5 + Math.random() * (-.5 - .5);
@@ -90,21 +92,21 @@
 
                 };
 
-                // updating legend text with  updated with y Value
-                chart.options.data[0].legendText = " Company A  $" + yValue1;
+                // updating legend text with  updated with y Value, #to-do change USD to {{currency}}
+                chart.options.data[0].legendText = " USD  $" + yValue1;
 
                 chart.render();
 
             };
 
             // generates first set of dataPoints
-            updateChart(300);
+            updateChart(1000);
 
             // update chart after specified interval
             setInterval(function () { updateChart() }, updateInterval);
         }
     </script>
-    <script type="text/javascript" src="/js/vendor/canvasjs.min.js"></script>
+    <script type="text/javascript" src="js/vendor/canvasjs.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
     <meta name="description" content="">
@@ -120,7 +122,6 @@
     </style>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/lineChart.css">
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/vendor/angular.js"></script>
@@ -261,15 +262,7 @@
             </div>
         </article>
     </article>
-
-	<article id="chartContainer" class="col-md-12">
-		<article id="dynamicChartContainer" class="col-md-6">
-			Chart 1 container
-		</article>
-		<article id="chart2" class="col-md-6">
-			Chart 2 container
-		</article>
-	</article>
+    <article id="dynamicChartContainer" class="col-md-12"></article>
 	
 	<footer class="col-md-12">
 		<p>&copy; Team Anonymous 2016</p>
