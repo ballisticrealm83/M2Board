@@ -125,6 +125,8 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/vendor/angular.js"></script>
     <script src="js/controller/controller.js"></script>
+    <script src="js/service/currencyService.js"></script>
+
 
 </head>
 <body>
@@ -164,6 +166,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <article class="jumbotron col-md-12">
         <article id="usdGauge" class="container col-md-4">
+            <button onclick="alert('USD')"/>
             <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
                 <svg id="meter">
 
@@ -195,6 +198,7 @@
             </div>
         </article>
         <article id="gbpGauge" class="container col-md-4">
+            <button onclick="alert('SGD')" />
             <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
                 <svg id="meter">
 
