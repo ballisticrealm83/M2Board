@@ -1,13 +1,12 @@
 ﻿(function () {
 
-
     angular.module('m2Board', [])
 
-    .controller('gaugeController', ['$scope', 'currencyService', function GaugeControler($scope, currencyService) {
+    .controller('gaugeController', ['$scope', 'currencyService', function GaugeController($scope, currencyService) {
 
-        //alert(currencyService.getCurrencies()['SGD']);
+        alert(currencyService.getCurrencies()['SGD']);
 
-
+        /*
         var balance = currencyService.getCurrencyBalance()['USD'];
        
         var percentage = balance / 100;
@@ -19,7 +18,7 @@
         //alert(greenArcMaskStroke);
 
         $("#redArc").attr("stroke-dasharray", greenArcStroke + ",943");
-        $("#redArcMask").attr("stroke-dasharray", greenArcMaskStroke+",943");
+        $("#redArcMask").attr("stroke-dasharray", greenArcMaskStroke+",943");*/
 
         /*
         setTimeout(
