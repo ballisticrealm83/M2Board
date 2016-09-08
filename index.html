@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="" ng-app="m2Board" ng-controller="gaugeController">
+<html class="no-js" lang="" ng-app="m2Board">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
@@ -167,8 +167,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <article class="jumbotron col-md-12">
         <article id="usdGauge" class="container col-md-4">
-            <button onclick="alert('USD')"/>
-            <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+            <button onclick="loadLineChart('USD')" ng-controller="lineChartController"></button>
+            <div id="wrapper"  ng-controller="gaugeController">
                 <svg id="meter">
 
 
@@ -200,7 +200,7 @@
         </article>
         <article id="gbpGauge" class="container col-md-4">
             <button onclick="alert('SGD')" />
-            <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+            <div id="wrapper"  ng-controller="gaugeController">
                 <svg id="meter">
 
 
@@ -231,7 +231,7 @@
             </div>
         </article>
         <article id="eurGauge" class="container col-md-4">
-            <div id="wrapper" ng-app="m2Board" ng-controller="gaugeController">
+            <div id="wrapper" ng-controller="gaugeController">
                 <svg id="meter">
 
 
